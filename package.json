@@ -1,0 +1,24 @@
+{
+  "name": "chris-express-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WickedDeveloper4L/chris-express-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WickedDeveloper4L/chris-express-server/issues"
+  },
+  "homepage": "https://github.com/WickedDeveloper4L/chris-express-server#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
