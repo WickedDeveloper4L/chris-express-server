@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/WickedDeveloper4L/chris-express-server#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "hbs": "^4.2.0"
   }
 }

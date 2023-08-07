@@ -1,7 +1,12 @@
 const express = require("express");
-const friendsController = require("./controllers/friends.controller");
-const app = express();
+const path = require("path");
 
+const friendsRouter = require("./routes/friends.router");
+const messagesRouter = require("./routes/messages.router");
+
+const app = express();
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 const PORT = 8080;
 
 app.use((req, res, next) => {
@@ -9,18 +14,20 @@ app.use((req, res, next) => {
 
   next();
   const delta = Date.now() - start;
-  console.log(`${req.method} ${req.url} ${delta}ms`);
+  console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
 });
-
-app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("Welcome to Chris Express Server!");
+  res.render("index", {
+    title: "My friends are very funny",
+    caption: "lets ski together",
+  });
 });
+app.use("/site", express.static(path.join(__dirname, "public")));
+app.use(express.json());
 
-app.get("/friends", friendsController.getFriends);
+app.use("/friends", friendsRouter);
 
-app.post("/friends", friendsController.addFriend);
-app.get("/friends/:friendId", friendsController.getFriend);
+app.use("/messages", messagesRouter);
 app.listen(PORT, () => {
   console.log(`Listening to chris express server at ${PORT}`);
 });
